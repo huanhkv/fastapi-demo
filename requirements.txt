@@ -1,0 +1,7 @@
+fastapi[standard]==0.115.2
+pydantic==2.9.2
+pydantic-settings==2.6.1
+opentelemetry-api==1.28.1
+opentelemetry-sdk==1.28.1
+opentelemetry-exporter-gcp-trace==1.7.0
+opentelemetry-instrumentation-fastapi==0.49b1
