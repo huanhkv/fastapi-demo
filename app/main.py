@@ -3,6 +3,7 @@ from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.api.routers import router
 from app.core.logging import Logger
 from app.core.config import settings
 from app.core.otel import setup_opentelemetry
@@ -30,6 +31,9 @@ app.add_middleware(
 setup_opentelemetry(settings)
 FastAPIInstrumentor.instrument_app(app)
 
+# Add Routers
+app.include_router(router)
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8500)
+    uvicorn.run(app, host="0.0.0.0", port=8080)
