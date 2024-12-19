@@ -3,6 +3,7 @@ from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.version import __version__
 from app.api.routers import router
 from app.core.logging import Logger
 from app.core.config import settings
@@ -13,7 +14,7 @@ logger.info(f"Configurations: {settings}")
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
-    version=settings.VERSION,
+    version=__version__,
     root_path=settings.ROOT_PATH
 )
 

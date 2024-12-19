@@ -4,7 +4,6 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
 
     # COMMON
-    VERSION: str = "v0.0.1"
     ROOT_PATH: str = "/api/v1/fastapi-demo"
     SERVICE_NAME: str = "fastapi-demo"
     PROJECT_NAME: str = "FastAPI Demo"
