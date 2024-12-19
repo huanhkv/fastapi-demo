@@ -1,23 +1,25 @@
-name: Continuous Delivery
+name: Bump Version
 
 on:
   push:
     branches:
-      - release
+      - main
 
 jobs:
-  release:
+  bump-version:
     runs-on: ubuntu-latest
-    concurrency: release
-
+    
     permissions:
-      actions: write
-      contents: write
-
+        actions: write
+        contents: write
+  
     steps:
-      - name: Setup | Checkout Repository at workflow sha
-        uses: actions/checkout@v4
-
-      - name: Action | Semantic Version Release
-        id: release
-        uses: python-semantic-release/python-semantic-release@v9.15.2
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+            fetch-depth: 0
+      
+      - name: Bump version using semantic-release
+        uses: python-semantic-release/python-semantic-release@master
+        with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
